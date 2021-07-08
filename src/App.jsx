@@ -1,15 +1,15 @@
-import NavBar from "./components/NavBar/NavBar";
+import React from "react";
 import "bulma/css/bulma.min.css";
 import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import cono from "./cono.svg";
+
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <ItemListContainer greeting="E-commerce en camino"/>
-      <img src={cono} className="cono-img" alt="cono" />
+      <ItemListContainer />
     </div>
   );
 }

@@ -4,3 +4,10 @@
   height: 150vh;
   background: cover;
 };
+.logoImg{
+  object-fit: contain;
+  padding: 0 rem;
+};
+div.box{
+  height: 50px;
+}

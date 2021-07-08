@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import Load from "../Load/Load";
+import ItemList from "./ItemList";
 
+const ItemListContainer = () => {
 
-const ItemListContainer = ({greeting}) => {
-    return (
-        <div className="block p-6">
-            <div className="box">
-                <h2 className="title">{greeting}</h2>
-            </div>
-        </div>
-    )
-}
+  const [data, setData] = useState({
+    items: [],
+    isLoading: true,
+  });
 
-export default ItemListContainer
+  const requestData = () => {
+    setTimeout(function startFetch() {
+      fetch("/products.json")
+        .then((response) => response.json())
+        .then((json) => setData({ items: json, isLoading: false }));
+    }, 2000);
+  };
+
+  useEffect(requestData, []);
+
+  return (
+    <div className= "box">
+      {data.isLoading ? <Load /> : <ItemList items={data.items} />}
+    </div>
+  );
+};
+
+export default ItemListContainer;
