@@ -1,17 +1,31 @@
-import React, { useState} from "react";
-import ActionProduct from "./ActionProduct.jsx";
+import React, { Fragment } from "react";
 
-const County = (stock, initial) => {
-
-const [count, setCount]= useState(initial);
-const updateCounty = (e)=> setCount(count + Number(e.target.value));
-
-return(
-	<div>
-		<ActionProduct stock={stock} count={count} addUp= {updateCounty}/>
-	</div>
-	);
-
+const ItemCount = ({ stock, count, onAdd }) => {
+  return (
+    <Fragment>
+      <button
+        className="button is-dark is-small is-rounded"
+        type="button"
+        value={-1}
+        disabled={count <= 1}
+        onClick={onAdd}
+        title="Sest count"
+      >
+        -
+      </button>
+      <small className="tag is-white is-large m-0">{count}</small>
+      <button
+        className="button is-dark is-small is-rounded"
+        type="button"
+        value={1}
+        disabled={count >= stock}
+        onClick={onAdd}
+        title="Sum count"
+      >
+        +
+      </button>
+    </Fragment>
+  );
 };
 
-export default County;
+export default ItemCount;

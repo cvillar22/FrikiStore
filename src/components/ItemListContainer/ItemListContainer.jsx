@@ -20,7 +20,7 @@ const ItemListContainer = () => {
   useEffect(requestData, []);
 
   return (
-    <div className= "box">
+    <div>
       {data.isLoading ? <Load /> : <ItemList items={data.items} />}
     </div>
   );

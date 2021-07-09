@@ -8,6 +8,6 @@
   object-fit: contain;
   padding: 0 rem;
 };
-div.box{
-  height: 50px;
+.card-content{
+  text: orangered;
 }
