@@ -11,3 +11,6 @@
 .card-content{
   text: orangered;
 }
+ItemListContainer{
+  padding: 3px;
+}

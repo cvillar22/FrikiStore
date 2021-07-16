@@ -1,6 +1,6 @@
 import React from "react";
 
-const Item = ({ title, price, prodImg, stock, children }) => {
+const Item = ({ title, price, prodImg, stock, children,id }) => {
   return (
     <article className="card has-text-centered m-5">
       <header className="card-header is-flex is-justify-content-center">
@@ -16,6 +16,7 @@ const Item = ({ title, price, prodImg, stock, children }) => {
       </section>
       <footer className="card-footer is-flex-direction-column is-align-items-center">
         {children ? children : ""}
+        <button className="button is-dark is-small p-2 m-4" type="button" title="description" value={id}>Descripción</button>
       </footer>
       
     </article>
