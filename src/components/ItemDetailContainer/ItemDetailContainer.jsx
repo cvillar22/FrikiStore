@@ -14,9 +14,6 @@ const ItemDetailContainer = (props)=>{
 		.then((json)=>setDetailProd(json));	
 }
 
-console.log(id);
-console.log(detailProd);
-console.log(itemFiltered);
 
 useEffect(() =>{ 
 	const getFilter = (items) => {
@@ -29,7 +26,7 @@ useEffect(() =>{
  
 return(
 	<div className ="container">
-		{/*<ItemDetail itemFiltered={itemFiltered} />*/} hola
+		<ItemDetail itemFiltered={itemFiltered} />
 	</div>
 )
 }
