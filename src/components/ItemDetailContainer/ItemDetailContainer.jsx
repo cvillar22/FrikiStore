@@ -1,24 +1,35 @@
 import React, {useState,useEffect} from "react";
 import {useParams} from "react-router";
-import ItemCount from "../ItemCount/ItemCount";
+import ItemDetail from "./ItemDetail";
 
-const ItemDetailContainer = ()=>{
+
+const ItemDetailContainer = (props)=>{
 	const {id} = useParams ();
-	const[detailProd, setDetailProd] = useState({});
+	const[detailProd, setDetailProd] = useState([]);
+	const[itemFiltered, setItemFiltered] = useState();
 	
 	const getDetailProd = () =>{
-		fetch("products.json")
+		fetch("/products.json")
 		.then((res)=> res.json())
-		.then((json)=>setDetailProd(json),2000);	
+		.then((json)=>setDetailProd(json));	
 }
 
-useEffect(() =>{ getDetailProd(),[]})
+console.log(id);
+console.log(detailProd);
+console.log(itemFiltered);
+
+useEffect(() =>{ 
+	const getFilter = (items) => {
+		const f = items.find(prod => prod.id === id);
+		setItemFiltered(f);
+	}
+	getDetailProd()
+	getFilter(detailProd)
+},[])
  
 return(
 	<div className ="container">
-	<p>
-		{ItemDetailContainer.description}
-	</p>
+		{/*<ItemDetail itemFiltered={itemFiltered} />*/} hola
 	</div>
 )
 }

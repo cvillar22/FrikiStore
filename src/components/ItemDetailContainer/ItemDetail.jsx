@@ -1,27 +1,25 @@
 import React from "react";
-import ItemDetailContainer from "./ItemDetailContainer";
+import ItemCountContainer from '../ItemCount/ItemCountContainer'
 
-const ItemDetail = ({ title, price, prodImg, stock, children,id,description}) => {
-  return (
+const ItemDetail = ({itemFiltered}) => {
+  console.log(itemFiltered);
+ return (
     <article className="card has-text-centered m-5">
-
       <header className="card-header is-flex is-justify-content-center">
         <figure className="card-image">
-          <img  className="image" src={prodImg} alt="" />
+        {/*<img  className="image" src={itemFiltered.prodImg} alt="" />*/}
         </figure> 
-        <ItemDetailContainer />
       </header>
        <section className="card-content">
-        <h3 className="subtitle is-size-4-desktop">{title}</h3>
-        <b className="is-block is-size-4-desktop"> ${price} </b>
-        <b>{description}</b>
-        <small className="tag is-info is-light">stock: {stock}</small>
+        <h3 className="subtitle is-size-4-desktop">{itemFiltered.title}</h3>
+        <b className="is-block is-size-4-desktop"> ${itemFiltered.price} </b>
+        <b>{itemFiltered.description}</b>
+        <small className="tag is-info is-light">stock: {itemFiltered.stock}</small>
       </section>
-
       <footer className="card-footer is-flex-direction-column is-align-items-center">
-        <button className="button is-dark is-small p-2 m-4" type="button" title="description" value={id}>Añadir al carro</button> 
+      <ItemCountContainer stock={itemFiltered.stock} initial={1} />
+        <button className="button is-dark is-small p-2 m-4" type="button" title="description">Añadir al carro</button> 
       </footer>
-
     </article>
   );
 }
