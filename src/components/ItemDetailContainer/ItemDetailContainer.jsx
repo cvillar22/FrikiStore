@@ -5,28 +5,23 @@ import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = (props)=>{
 	const {id} = useParams ();
-	const[detailProd, setDetailProd] = useState([]);
-	const[itemFiltered, setItemFiltered] = useState();
+
+	const [product, setProduct] = useState(null);
 	
 	const getDetailProd = () =>{
 		fetch("/products.json")
 		.then((res)=> res.json())
-		.then((json)=>setDetailProd(json));	
-}
-
-
-useEffect(() =>{ 
-	const getFilter = (items) => {
-		const f = items.find(prod => prod.id === id);
-		setItemFiltered(f);
+		.then((json)=> {
+			const productFiltered = json.find( prod => prod.id === +id);
+			setProduct(productFiltered)
+		});	
 	}
-	getDetailProd()
-	getFilter(detailProd)
-},[])
+
+useEffect(getDetailProd,[id])
  
 return(
 	<div className ="container">
-		<ItemDetail itemFiltered={itemFiltered} />
+		{ product && <ItemDetail itemFiltered={product} />}
 	</div>
 )
 }

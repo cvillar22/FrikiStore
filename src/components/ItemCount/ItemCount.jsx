@@ -9,7 +9,7 @@ const ItemCount = ({ stock, count, onAdd }) => {
         value={-1}
         disabled={count <= 1}
         onClick={onAdd}
-        title="Sest count"
+        title="Rest count"
       >
         -
       </button>

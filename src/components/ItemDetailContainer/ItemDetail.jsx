@@ -7,7 +7,7 @@ const ItemDetail = ({itemFiltered}) => {
     <article className="card has-text-centered m-5">
       <header className="card-header is-flex is-justify-content-center">
         <figure className="card-image">
-        {/*<img  className="image" src={itemFiltered.prodImg} alt="" />*/}
+        <img  className="image" src={itemFiltered.prodImg} alt="" />
         </figure> 
       </header>
        <section className="card-content">
