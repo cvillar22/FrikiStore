@@ -1,23 +1,36 @@
-import React from "react";//que funcione todo lo que está adentro
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "bulma/css/bulma.min.css";
 import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import Logo from "../Logo/Logo";
+import NavBarCategories from "./NavBarCategories";
+
 
 const NavBar = () => {
+
+	const [categories, setCategories] = useState(null);
+
+	const getCategories = () =>{
+		fetch("/categories.json")
+		.then((res)=> res.json())
+		.then((json) => {
+			setCategories(json)
+		});	
+	}
+  	useEffect(getCategories, []);
+
 	return(
 
 		<nav className="navbar is-dark" role="navigation" aria-label="main navigation">
   			<div className="navbar-brand">
-   				 <a className="navbar-item"><Logo /></a>	 
+   				 <Link  to="/"><a className="navbar-item"><Logo  className="logoImg" /></a></Link>	 
  			</div>
 			<div className="navbar-menu">
     			<div className="navbar-end">
-     				<a className="navbar-item">Inicio </a>
-     				<a className="navbar-item">Productos</a>
-      				<a className="navbar-item">Nosotros</a> 
-     				<a className="navbar-item">Contacto</a>
-     				<a className="navbar-item"><CartWidget /></a>	
+				{categories && <NavBarCategories categories={categories} />}
+				
+     			<a className="navbar-item"><CartWidget /></a>	
      		 	</div>
    		 	</div>
 		</nav>

@@ -5,6 +5,7 @@
     "stock": 15,
     "description":"text with a full description of this product",
     "price": 600,
+    "category": 1,
     "prodImg": "https://via.placeholder.com/200"
   },
   {
@@ -13,6 +14,7 @@
     "stock": 7,
     "description":"text with a full description of this product",
     "price": 900,
+    "category": 2,
     "prodImg": "https://via.placeholder.com/200"
   },
   {
@@ -21,6 +23,7 @@
     "stock": 100,
     "description":"text with a full description of this product",
     "price": 1200,
+    "category": 3,
     "prodImg": "https://via.placeholder.com/200"
   },
   {
@@ -29,6 +32,7 @@
     "stock": 5,
     "description":"text with a full description of this product",
     "price": 300,
+    "category": 4,
     "prodImg": "https://via.placeholder.com/200"
   },
   {
@@ -37,6 +41,7 @@
     "stock": 5,
     "description":"text with a full description of this product",
     "price": 300,
+    "category": 1,
     "prodImg": "https://via.placeholder.com/200"
   }
 ]

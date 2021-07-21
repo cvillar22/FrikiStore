@@ -6,7 +6,8 @@ const Item = ({ item }) => {
   const {prodImg, title, price, stock, id} = item;
 
   return (
-    <article className="card has-text-centered m-5">
+    <div className="columns is-multiline">
+    <article className="card is-gap is-4 has-text-centered m-5">
      
       <header className="card-header is-flex is-justify-content-center">
         <figure className="card-image p-1">
@@ -25,6 +26,7 @@ const Item = ({ item }) => {
       </footer>
       
     </article>
+    </div>
   );
 };
 

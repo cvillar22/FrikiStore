@@ -3,7 +3,6 @@ import "bulma/css/bulma.min.css";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetail from "./components/ItemDetailContainer/ItemDetail";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import {
   BrowserRouter as Router,
@@ -18,8 +17,9 @@ function App() {
     <div className="App">
       <NavBar />
       <Switch>
-          <Route exact path="/" component={ItemListContainer} />
-          <Route path="/item/:id" component={ItemDetailContainer} />
+          <Route exact path={["/", "/category/:id"]} component={ItemListContainer} />
+          <Route exact path="/item/:id" component={ItemDetailContainer} />
+          <Route exact path="/cart" />
       </Switch>
     </div>
     </Router>

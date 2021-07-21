@@ -17,9 +17,9 @@ const ItemDetailContainer = (props)=>{
 		});	
 	}
 
-useEffect(getDetailProd,[id])
+	useEffect(getDetailProd,[id])
  
-return(
+	return(
 	<div className ="container">
 		{ product && <ItemDetail itemFiltered={product} />}
 	</div>

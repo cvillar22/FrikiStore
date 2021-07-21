@@ -20,7 +20,6 @@ const ItemListContainer = () => {
   useEffect(() => {
     requestData()
   }, [])
-  console.log(data);
 
   return (
     <div>

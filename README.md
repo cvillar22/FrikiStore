@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+FrikiStore es un proyecto de e-commerse utilizando React.
+
+A partir de diferentes componentes se va conformando la aplicación.
+
+Comenzando con el NavBar, la visulaizacion de los productos a vender, el contador y detalle de cada prodcuto.

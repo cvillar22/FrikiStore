@@ -14,3 +14,11 @@
 ItemListContainer{
   padding: 3px;
 }
+.cardDetail{
+
+  margin: 50px;
+
+}
+.card-header{
+  box-shadow: none;
+}
