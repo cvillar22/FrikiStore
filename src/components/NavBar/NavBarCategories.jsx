@@ -2,11 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const NavBarCategories = ({ categories }) => {
+  console.log(categories);
   return (
     <ul className="navbar-end">
       {categories.map((category) => (
         <li key={category.id} className="navbar-item">
-          <NavLink to={`/category/${category.id}`}>
+          <NavLink to={`/category/${category.id}`} className="has-text-white">
             {category.title}
           </NavLink>
         </li>

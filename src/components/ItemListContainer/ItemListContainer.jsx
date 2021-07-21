@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Load from "../Load/Load";
 import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
+  
+  const { id } = useParams();
 
   const [data, setData] = useState({
     items: [],
@@ -13,13 +16,19 @@ const ItemListContainer = () => {
     setTimeout(function startFetch() {
       fetch("/products.json")
         .then((response) => response.json())
-        .then((json) => setData({ items: json, isLoading: false }));
+        .then((json) => {
+          const products = id
+        ? json.filter((product) => product.category === +id)
+        : json;
+          setData({ items: json, isLoading: false })
+        });
     }, 2000);
   };
+  
 
   useEffect(() => {
     requestData()
-  }, [])
+  }, [id])
 
   return (
     <div>

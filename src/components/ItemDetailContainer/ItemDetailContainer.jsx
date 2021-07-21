@@ -13,7 +13,8 @@ const ItemDetailContainer = (props)=>{
 		.then((res)=> res.json())
 		.then((json)=> {
 			const productFiltered = json.find( prod => prod.id === +id);
-			setProduct(productFiltered)
+			//const categoryFiltered = json.find (prod => prod.category === +id);
+			setProduct(productFiltered);
 		});	
 	}
 

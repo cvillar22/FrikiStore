@@ -19,6 +19,7 @@ const NavBar = () => {
 		});	
 	}
   	useEffect(getCategories, []);
+	console.log(categories);
 
 	return(
 
