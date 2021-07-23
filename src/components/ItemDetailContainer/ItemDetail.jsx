@@ -1,8 +1,12 @@
-import React from "react";
-import ItemCountContainer from '../ItemCount/ItemCountContainer'
+import React,{useState} from "react";
+import ItemCountContainer from '../ItemCount/ItemCountContainer';
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({itemFiltered}) => {
-  console.log(itemFiltered);
+  const [count, setCount] = useState(1);
+  const [finished, setFinished] = useState(false);
+  const handleState = () =>setFinished(!finished);
+  
  return (
     <article className="cardDetail">
       <header className="card-header is-flex is-justify-content-center">
@@ -17,9 +21,20 @@ const ItemDetail = ({itemFiltered}) => {
         <div><small className="tag is-info is-light">stock: {itemFiltered.stock}</small></div>
       </section>
       <footer className="card-footer is-flex-direction-column is-align-items-center">
+      {!finished ? ( 
+      <>
       <ItemCountContainer stock={itemFiltered.stock} initial={1} />
-        <button className="button is-dark is-small p-2 m-4" type="button" title="description">Añadir al carro</button> 
-      </footer>
+      <button  onClick ={handleState} className="button is-dark is-normal p-2 m-4" type="button">Comprar</button> 
+      </>
+      ):(
+      <>
+        <Link to ="/cart" onClick={handleState}>
+          <button onClick = {handleState} className= "button is-dark is-normal is-hovered m-4">Listo!</button>
+        </Link>
+        <button onClick = {handleState} className= "button is-danger is-small m-1">Cambiar</button>
+      </>
+      )}
+        </footer>
     </article>
   );
 }

@@ -3,6 +3,7 @@ import {useParams} from "react-router";
 import ItemDetail from "./ItemDetail";
 
 
+
 const ItemDetailContainer = (props)=>{
 	const {id} = useParams ();
 
@@ -13,7 +14,6 @@ const ItemDetailContainer = (props)=>{
 		.then((res)=> res.json())
 		.then((json)=> {
 			const productFiltered = json.find( prod => prod.id === +id);
-			//const categoryFiltered = json.find (prod => prod.category === +id);
 			setProduct(productFiltered);
 		});	
 	}

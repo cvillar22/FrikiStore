@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const NavBarCategories = ({ categories }) => {
-  console.log(categories);
   return (
     <ul className="navbar-end">
       {categories.map((category) => (

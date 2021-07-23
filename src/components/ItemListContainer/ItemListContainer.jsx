@@ -21,7 +21,7 @@ const ItemListContainer = () => {
     });
   };
 
-  useEffect(requestData, [id]);
+  useEffect(()=>{requestData()}, [id]);
 
   return (
     <div>
