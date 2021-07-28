@@ -1,4 +1,5 @@
-import React from "react";
+import React, { createContext } from "react";
+import { CartContext } from "./context/CartContext";
 import "bulma/css/bulma.min.css";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
@@ -10,6 +11,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
@@ -19,7 +21,7 @@ function App() {
       <Switch>
           <Route exact path={["/", "/category/:id"]} component={ItemListContainer} />
           <Route exact path="/item/:id" component={ItemDetailContainer} />
-          <Route exact path="/cart" />
+          <Route exact path="/cart" component={Cart} />
       </Switch>
     </div>
     </Router>

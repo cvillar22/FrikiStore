@@ -1,12 +1,24 @@
 import React,{useState} from "react";
 import ItemCountContainer from '../ItemCount/ItemCountContainer';
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({itemFiltered}) => {
-  const [count, setCount] = useState(1);
-  const [finished, setFinished] = useState(false);
-  const handleState = () =>setFinished(!finished);
+
   
+  const [count, setCount] = useState(1);
+ 
+  const [finished, setFinished] = useState(false);
+  
+  const handleState = () =>setFinished(!finished);
+
+  const {addItem} = useCartContext();
+
+  const handleSend = () => {
+    const newItemFiltered = { product: { ...itemFiltered }, quantity: count };
+    addItem(newItemFiltered);
+  };
+
  return (
     <article className="cardDetail">
       <header className="card-header is-flex is-justify-content-center">
@@ -24,14 +36,14 @@ const ItemDetail = ({itemFiltered}) => {
       {!finished ? ( 
       <>
       <ItemCountContainer stock={itemFiltered.stock} initial={1} />
-      <button  onClick ={handleState} className="button is-dark is-normal p-2 m-4" type="button">Comprar</button> 
+      <button  onClick ={()=>{handleState(); handleSend(itemFiltered);}} className="button is-dark is-normal p-2 m-4" type="button">Comprar</button> 
       </>
       ):(
       <>
         <Link to ="/cart" onClick={handleState}>
           <button onClick = {handleState} className= "button is-dark is-normal is-hovered m-4">Listo!</button>
         </Link>
-        <button onClick = {handleState} className= "button is-danger is-small m-1">Cambiar</button>
+        <button onClick = {()=> {handleState();}} className= "button is-danger is-small m-1">Cambiar</button>
       </>
       )}
         </footer>
