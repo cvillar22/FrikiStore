@@ -19,6 +19,7 @@ export const CartContext = ({children})=>{
     };
 
     useEffect(retrieveFromStorage, []);
+    
     const addItem = (newItemFiltered) => {
         if (isInCart(newItemFiltered.id)) {
           updateItem(newItemFiltered);

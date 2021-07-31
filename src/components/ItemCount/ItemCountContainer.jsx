@@ -8,7 +8,7 @@ const CountContainer = ({stock, initial}) => {
 
   return (
     <div className="level is-mobile p-1 m-0">
-      <ItemCount stock={stock} count={count} onAdd={updateValue} />
+      <ItemCount stock={stock} count={count} quantity = {count} onAdd={updateValue} />
     </div>
   );
 };

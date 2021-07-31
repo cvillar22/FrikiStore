@@ -16,7 +16,7 @@ const ItemDetail = ({itemFiltered}) => {
   const {addItem} = useCartContext();
 
   const handleSend = () => {
-    const newItemFiltered = {...itemFiltered, quantity: count };
+    const newItemFiltered = {...itemFiltered, quantity: count};
     addItem(newItemFiltered);
   };
 
