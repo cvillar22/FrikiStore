@@ -7,6 +7,7 @@ const ItemDetail = ({itemFiltered}) => {
 
   
   const [count, setCount] = useState(1);
+  const updateCount = (event)=> setCount(count + +event.target.value);
  
   const [finished, setFinished] = useState(false);
   
@@ -15,7 +16,7 @@ const ItemDetail = ({itemFiltered}) => {
   const {addItem} = useCartContext();
 
   const handleSend = () => {
-    const newItemFiltered = { product: { ...itemFiltered }, quantity: count };
+    const newItemFiltered = {...itemFiltered, quantity: count };
     addItem(newItemFiltered);
   };
 
@@ -35,7 +36,7 @@ const ItemDetail = ({itemFiltered}) => {
       <footer className="card-footer is-flex-direction-column is-align-items-center">
       {!finished ? ( 
       <>
-      <ItemCountContainer stock={itemFiltered.stock} initial={1} />
+      <ItemCountContainer stock={itemFiltered.stock} initial={1} onAdd={updateCount} />
       <button  onClick ={()=>{handleState(); handleSend(itemFiltered);}} className="button is-dark is-normal p-2 m-4" type="button">Comprar</button> 
       </>
       ):(
@@ -43,7 +44,7 @@ const ItemDetail = ({itemFiltered}) => {
         <Link to ="/cart" onClick={handleState}>
           <button onClick = {handleState} className= "button is-dark is-normal is-hovered m-4">Listo!</button>
         </Link>
-        <button onClick = {()=> {handleState();}} className= "button is-danger is-small m-1">Cambiar</button>
+        <button onClick = {()=> { handleState()}} className= "button is-danger is-small m-1">Cambiar</button>
       </>
       )}
         </footer>

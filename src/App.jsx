@@ -16,6 +16,7 @@ import Cart from "./components/Cart/Cart";
 function App() {
   return (
     <Router>
+    <CartContext>
     <div className="App">
       <NavBar />
       <Switch>
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/cart" component={Cart} />
       </Switch>
     </div>
+    </CartContext>
     </Router>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 
 const CartFull = () => {
-  const { cart, getItemsCount, calculateTotal, removeItem, clearCart } = useCartContext();
+  const { cart, getItemsCount, calculateTotal, removeItem, clearCart, hasItemInCart } = useCartContext();
   
    const removeFromCart = (event) => {
     const productID = +event.target.value;
@@ -26,11 +26,12 @@ const CartFull = () => {
           >
             Borrar
           </button>
-          <Link to={`/product/${itemFiltered.id}`}>
+          <Link to={`/`}>
             <button
               role="link"
               className="button is-warning is-dark"
               title="Edit order"
+              onClick={hasItemInCart}
             >
               Editar
             </button>
