@@ -36,7 +36,7 @@ const ItemDetail = ({itemFiltered}) => {
       <footer className="card-footer is-flex-direction-column is-align-items-center">
       {!finished ? ( 
       <>
-      <ItemCountContainer stock={itemFiltered.stock} initial={1} onAdd={updateCount} />
+      <ItemCountContainer stock={itemFiltered.stock} initial={1} count={count} onAdd={updateCount} />
       <button  onClick ={()=>{handleState(); handleSend(itemFiltered);}} className="button is-dark is-normal p-2 m-4" type="button">Comprar</button> 
       </>
       ):(
