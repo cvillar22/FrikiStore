@@ -5,21 +5,19 @@ import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import Logo from "../Logo/Logo";
 import NavBarCategories from "./NavBarCategories";
+import { requestCategories } from "../../firebase/firebase";
 
 
 const NavBar = () => {
 
 	const [categories, setCategories] = useState(null);
+  	const [navbarActive, setNavbarActive] = useState(false);
+  	const getCategories = () => {
+    const onResponse = (response) => setCategories(response);
+    requestCategories(onResponse);
+  };
 
-	const getCategories = () =>{
-		fetch("/categories.json")
-		.then((res)=> res.json())
-		.then((json) => {
-			setCategories(json)
-		});	
-	}
-  	useEffect(getCategories, []);
-
+  useEffect(getCategories, []);
 
 	return(
 
@@ -30,8 +28,9 @@ const NavBar = () => {
 			<div className="navbar-menu">
     			<div className="navbar-end">
 				{categories && <NavBarCategories categories={categories} />}
-				
-     			<a className="navbar-item"><CartWidget /></a>	
+				<Link to="/cart">
+     			<a className="navbar-item"><CartWidget /></a>
+				 </Link>	
      		 	</div>
    		 	</div>
 		</nav>

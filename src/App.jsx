@@ -1,5 +1,6 @@
-import React, { createContext } from "react";
+import React from "react";
 import { CartContext } from "./context/CartContext";
+import ContextData from "./context/contextData";
 import "bulma/css/bulma.min.css";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
@@ -17,14 +18,16 @@ function App() {
   return (
     <Router>
     <CartContext>
-    <div className="App">
-      <NavBar />
-      <Switch>
-          <Route exact path={["/", "/category/:id"]} component={ItemListContainer} />
-          <Route exact path="/item/:id" component={ItemDetailContainer} />
-          <Route exact path="/cart" component={Cart} />
-      </Switch>
-    </div>
+      <ContextData>
+      <div className="App">
+        <NavBar />
+          <Switch>
+              <Route exact path={["/", "/category/:categoryName"]} component={ItemListContainer} />
+              <Route exact path="/product/:productID" component={ItemDetailContainer} />
+              <Route exact path="/cart" component={Cart} />
+          </Switch>
+      </div>
+      </ContextData>
     </CartContext>
     </Router>
   );

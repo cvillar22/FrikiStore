@@ -50,9 +50,9 @@ export const CartContext = ({children})=>{
 
     const hasItemsInCart = () => cart.length > 0;
 
-    const isInCart = (id) => cart.some((itemFiltered) => itemFiltered.id === id);
+    const isInCart = (id) => cart.some((item) => item.id === id);
 
-    const calculateTotal = () => cart.reduce((current, itemFiltered) => current + itemFiltered.price * itemFiltered.quantity, 0);
+    const calculateTotal = () => cart.reduce((current, item) => current + item.price * item.quantity, 0);
   
     const getItemsCount = () =>  cart.length;
 

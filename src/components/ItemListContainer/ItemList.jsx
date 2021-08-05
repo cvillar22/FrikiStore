@@ -1,7 +1,5 @@
 import React from "react";
-import ItemCountContainer from "../ItemCount/ItemCountContainer";
 import Item from "./Item";
-import { Link } from "react-router-dom";
 
 const ItemList = ({ items }) => {
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ItemCountContainer from '../ItemCount/ItemCountContainer'
 
 const Item = ({ item }) => {
   const {prodImg, title, price, stock, id} = item;
@@ -21,8 +20,7 @@ const Item = ({ item }) => {
         <small className="tag is-info is-light">stock: {stock}</small>
       </section>
       <footer className="card-footer is-flex-direction-column is-align-items-center">
-        {/* <ItemCountContainer stock={stock} initial={1} /> */}
-        <Link to={`/item/${id}`} className="button is-dark is-small p-2 m-4" type="button" title="description" value={id}>Descripción</Link>
+        <Link to={`/product/${id}`} className="button is-dark is-small p-2 m-4" type="button" title="description" value={id}>Descripción</Link>
       </footer>
       
     </article>

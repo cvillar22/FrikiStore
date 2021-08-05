@@ -1,33 +1,42 @@
 import React, { useEffect, useState } from "react";
-import Load from "../Load/Load";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import { fetchFunction } from "../../scripts/functionfetch";
+import loaderPlus from "../Load/loaderPlus";
+import { useContextData } from "../../context/contextData";
+import { requestProducts } from "../../firebase/firebase";
 
-const ItemListContainer = () => {
+const ItemListContainer = loaderPlus(({ visibility }) => {
+  const { categoryName } = useParams();
 
-  const { id } = useParams();
+  const [itemsFiltered, setItemsFiltered] = useState([]);
+  const [allItems, setAllItems] = useState([]);
 
-  const [data, setData] = useState({
-    items: [],
-    isLoading: true,
-  });
-  const requestData = () => {
-    fetchFunction("/products.json", 700, function updateState(json) {
-      const products = id
-        ? json.filter((product) => product.category === +id)
-        : json;
-      setData({ items: products, isLoading: false });
-    });
+  const { showLoader, hideLoader } = useContextData();
+
+  const getAllProducts = () => {
+    const onResponse = (response) => setAllItems(response);
+    requestProducts(onResponse);
   };
 
-  useEffect(()=>{requestData()}, [id]);
+  const getProductsByCategory = () => {
+    const onResponse = (response) => setItemsFiltered(response);
+    const onFinally = () => hideLoader();
+    const applyFilter = Boolean(categoryName);
+
+    showLoader();
+    requestProducts(onResponse, onFinally, applyFilter, categoryName);
+  };
+
+  useEffect(getAllProducts, []);
+  useEffect(getProductsByCategory, [categoryName, showLoader, hideLoader]);
 
   return (
-    <div>
-      {data.isLoading ? <Load /> : <ItemList items={data.items} />}
+    <div className={`container ${visibility}`}>
+      <>
+        <ItemList items={itemsFiltered} />
+      </>
     </div>
   );
-};
+});
 
 export default ItemListContainer;

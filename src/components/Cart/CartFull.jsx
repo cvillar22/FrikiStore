@@ -11,17 +11,17 @@ const CartFull = () => {
   };
 
 
-  const generateRow = (itemFiltered) => {
+  const generateRow = (item) => {
     return (
-      <tr key={itemFiltered.id}>
-        <td>{itemFiltered.title}</td>
-        <td>{itemFiltered.quantity}</td>
-        <td>${itemFiltered.price}</td>
-        <td>${itemFiltered.quantity * itemFiltered.price}</td>
+      <tr key={item.id}>
+        <td>{item.title}</td>
+        <td>{item.quantity}</td>
+        <td>${item.price}</td>
+        <td>${item.quantity * item.price}</td>
         <td>
           <button
             className="button is-danger is-dark mx-2"
-            value={itemFiltered.id}
+            value={item.id}
             onClick={removeFromCart}
           >
             Borrar
@@ -62,7 +62,7 @@ const CartFull = () => {
             </tr>
           </thead>
 
-          <tbody>{cart.map((itemFiltered) => generateRow(itemFiltered))}</tbody>
+          <tbody>{cart.map((item) => generateRow(item))}</tbody>
 
           <tfoot>
             <tr className="has-text-center is-size-5">
